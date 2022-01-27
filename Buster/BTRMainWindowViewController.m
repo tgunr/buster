@@ -92,7 +92,7 @@
         header[@"message"] = [[NSUserDefaults standardUserDefaults] stringForKey:@"slowDataMessage"];
         self.statusLED.image = [NSImage imageNamed:@"Red LED"];
     } else {
-        header[@"color"] = [NSColor colorWithCalibratedRed:0.088 green:0.373 blue:0.139 alpha:1.000];
+        header[@"color"] = [NSColor colorWithCalibratedRed:0.088 green:0.873 blue:0.139 alpha:1.000];
         self.statusLED.image = [NSImage imageNamed:@"Green LED"];
     }
     
@@ -124,9 +124,9 @@
         NSDate *headerTime = time;
         qso[@"duration"] = [NSNumber numberWithDouble:[headerTime timeIntervalSinceDate:qso[@"time"]]];
         if([qso[@"direction"] isEqualToString:@"TX"])
-            qso[@"color"] = [NSColor colorWithCalibratedRed:1.0 green:0.0 blue:0.0 alpha:0.5];
+            qso[@"color"] = [NSColor colorWithCalibratedRed:1.0 green:0.0 blue:0.0 alpha:0.9];
         else
-            qso[@"color"] = [NSColor blackColor];
+            qso[@"color"] = [NSColor grayColor];
     }];
     
     NSUInteger qsoIndex = [BTRMainWindowViewController findQsoId:streamId inArray:self.heardTableController.arrangedObjects];
@@ -256,7 +256,7 @@
     [self.reflectorTableView enumerateAvailableRowViewsUsingBlock:^void(NSTableRowView *rowView, NSInteger row) {
         NSTextField *reflectorView = ((NSTableCellView *)[rowView viewAtColumn:0]).textField;
         if([reflectorView.objectValue isEqualToString:destination])
-            reflectorView.textColor = [NSColor blackColor];
+            reflectorView.textColor = [NSColor grayColor];
     }];
 }
 
